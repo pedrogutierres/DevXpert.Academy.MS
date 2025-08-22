@@ -68,8 +68,17 @@ namespace DevXpert.Academy.Auth.API.Authentication
                 {
                     await _userManager.AddToRoleAsync(user, "Aluno");
 
-                    var token = await _jwtTokenGenerate.GerarToken(user.Email);
-                    // TODO: tratar problemas com o token
+                    AuthToken token;
+                    try
+                    {
+                        token = await _jwtTokenGenerate.GerarToken(user.Email);
+                    }
+                    catch (Exception ex)
+                    {
+                        await _userManager.DeleteAsync(user);
+
+                        throw new BusinessException($"Não foi possível obter os dados de autorização do usuário, tente novamente mais tarde. {ex.Message}");
+                    }
 
                     var retornoCadastroAluno = await _alunoApiClient.CadastrarAlunoAsync(new
                     {

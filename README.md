@@ -1,10 +1,15 @@
-# **DevXpert Academy - Aplicação de Plataforma de Educação Online API Microsserviços REST**
+# **DevXpert Academy - Plataforma de Educação Online em Microsserviços**
 
 ## **1. Apresentação**
 
-Bem-vindo ao repositório do projeto **DevXpert Academy**. Este projeto é uma entrega do MBA DevXpert Full Stack .NET e é referente ao módulo **Introdução ao Desenvolvimento ASP.NET Core**.
-O objetivo principal desenvolver uma aplicação de blog que permite aos usuários criar, editar, visualizar e excluir posts e comentários, tanto através de uma interface web utilizando MVC quanto através de uma API RESTful.
-Descreva livremente mais detalhes do seu projeto aqui.
+Bem-vindo ao repositório do projeto **DevXpert Academy**.  
+Este projeto é uma entrega do MBA DevXpert Full Stack .NET e está sendo evoluído para uma arquitetura baseada em **Microsserviços** com um **Front-end em Angular**.  
+
+O objetivo principal é desenvolver uma plataforma de educação online que permita a gestão de alunos, cursos, matrículas e pagamentos, oferecendo:  
+- **APIs RESTful** segmentadas por contexto de negócio;  
+- **Autenticação centralizada** via IdentityServer;  
+- **Front-end em Angular** como aplicação cliente;  
+- Comunicação assíncrona entre microsserviços via eventos.  
 
 ### **Autor**
 - **Pedro Otávio Gutierres**
@@ -13,61 +18,81 @@ Descreva livremente mais detalhes do seu projeto aqui.
 
 O projeto consiste em:
 
-- **API RESTful:** Exposição dos recursos do blog para integração com outras aplicações ou desenvolvimento de front-ends alternativos.
-- **Autenticação e Autorização:** Implementação de controle de acesso, diferenciando administradores e usuários comuns.
-- **Acesso a Dados:** Implementação de acesso ao banco de dados através de ORM.
-- **Modelagem de Dominios Ricos:** Utilizando DDD, TDD, CQRS e outros padrões arquiteturais.
+- **Microsserviços RESTful:** APIs independentes responsáveis por diferentes domínios (Alunos, Cursos, Matrículas, Pagamentos, Autenticação).  
+- **API BFF (Backend For Frontend):** Camada intermediária para orquestrar chamadas entre o front-end Angular e os microsserviços.  
+- **Autenticação e Autorização:** IdentityServer com suporte a JWT e perfis de usuário (Administrador e Aluno).  
+- **Modelagem de Domínios Ricos:** Uso de DDD, CQRS, TDD e outros padrões arquiteturais.  
+- **Mensageria:** Comunicação entre serviços via eventos, garantindo escalabilidade e consistência eventual.  
 
 ## **3. Tecnologias Utilizadas**
 
-- **Linguagem de Programação:** C#
-- **Frameworks:**
-  - ASP.NET Core Web API
+- **Back-end (Microsserviços):**
+  - C# / ASP.NET Core Web API
   - Entity Framework Core
-- **Banco de Dados:** SQL Server (ou SQLite)
-- **Autenticação e Autorização:**
+  - IdentityServer (Duende)
+  - Swagger (documentação)
+- **Front-end:**
+  - Angular
+  - TypeScript
+- **Banco de Dados:** SQL Server (ou SQLite em dev)
+- **Mensageria:** RabbitMQ
+- **Autenticação:**
+  - JWT (JSON Web Token)
   - ASP.NET Core Identity
-  - JWT (JSON Web Token) para autenticação na API
-- **Documentação da API:** Swagger
 
 ## **4. Estrutura do Projeto**
 
-A estrutura do projeto é organizada da seguinte forma:
+A estrutura do projeto (em evolução) é organizada da seguinte forma:
 
 - src/
-  - [em construção] ...
+  - backend/
+	- Alunos/
+	- Auth/
+	- BFF/
+	- Conteudo/
+	- Financeiro/
+  - Frontend/ (Angular)
 - README.md - Arquivo de Documentação do Projeto
 - FEEDBACK.md - Arquivo para Consolidação dos Feedbacks
 - .gitignore - Arquivo de Ignoração do Git
 
 ## **5. Funcionalidades Implementadas**
 
-- **Autenticação e Autorização:** Diferenciação entre usuários comuns e administradores.
-- **API RESTful:** Exposição de endpoints para operações CRUD via API.
-- **Documentação da API:** Documentação automática dos endpoints da API utilizando Swagger.
+- **Autenticação e Autorização:** Controle de acesso via IdentityServer, diferenciando perfis de Administrador e Aluno.  
+- **APIs RESTful:** Endpoints CRUD para cada contexto de negócio.  
+- **Eventos de Domínio:** Comunicação assíncrona entre microsserviços.  
+- **Swagger:** Documentação automática das APIs.  
 
-### Decisões de negócios:
-- **Administrador:** O administrador terá apenas um cadastro no IdentityServer como Usuário e perfil Administrador;
-- **Alunos:** Um aluno terá um cadastro na base de negócio como Aluno e um cadastro no IdentityServer como Usuário, com perfil Aluno;
-- **Matriculas:** As matriculas são vinculadas ao agregador Aluno
-  - Cada matricula terá um curso vinculado
-  - O aluno poderá ter apenas uma matrícula por curso
-- **Pagamentos:** Os pagamentos serão vínculados à matrícula, e não ao aluno, pois o aluno poderá ter várias matrículas, mas cada matrícula terá apenas um pagamento vinculado;
+### Decisões de negócio:
+- **Administrador:** Cadastro único no IdentityServer com perfil **Administrador**.  
+- **Alunos:** Cadastro em dois contextos:
+  - Domínio **Aluno** (dados acadêmicos);  
+  - IdentityServer (credenciais de acesso), perfil **Aluno**.  
+- **Matrículas:**  
+  - Vinculadas ao agregado **Aluno**;  
+  - Cada matrícula pertence a um único curso;  
+  - Um aluno pode ter apenas uma matrícula por curso.  
+- **Pagamentos:**  
+  - Vinculados à matrícula (e não ao aluno);  
+  - Cada matrícula possui apenas um pagamento.  
+
 
 ## **6. Como Executar o Projeto**
 
 ### **Pré-requisitos**
 
-- .NET SDK 9.0 ou superior
-- SQL Server (não necessário para ambiente de desenvolvimento)
-- Visual Studio 2022 ou superior (ou qualquer IDE de sua preferência)
+- .NET SDK 9.0 ou superior  
+- Node.js + Angular CLI  
+- SQL Server (não necessário em dev se usar SQLite)  
+- RabbitMQ (para mensageria)  
+- Visual Studio 2022 ou superior (ou VS Code / Rider)  
 - Git
 
 ### **Passos para Execução**
 
 1. **Clone o Repositório:**
-   - `git clone https://github.com/pedrogutierres/DevXpert.Academy.git`
-   - `cd DevXpert.Academy`
+   - `git clone https://github.com/pedrogutierres/DevXpert.Academy.MS.git`
+   - `cd DevXpert.Academy.MS`
 
 2. **Configuração do Banco de Dados:**
    - No arquivo `appsettings.json`, configure a string de conexão do SQL Server ou SQLite em ambiente de desenvolvimento.
@@ -76,7 +101,7 @@ A estrutura do projeto é organizada da seguinte forma:
 3. **Executar a API:**
    - `cd src/[em construção]...
    - `dotnet run`
-   - Acesse a documentação da API em: http://localhost:5001/swagger
+   - Acesse a documentação da API em: http://localhost:5000/swagger
 
 ### **Uso do Blog**
 
@@ -97,16 +122,10 @@ A estrutura do projeto é organizada da seguinte forma:
 
 A documentação da API está disponível através do Swagger. Após iniciar a API, acesse a documentação em:
 
-http://localhost:5001/swagger
-
-> **Documentação PlantUML disponível em [/docs/PlantUML](https://github.com/pedrogutierres/DevXpert.Academy/tree/master/docs/PlantUML)**
+http://localhost:5000/swagger
 
 ## **9. Avaliação**
 
 - Este projeto é parte de um curso acadêmico e não aceita contribuições externas. 
 - Para feedbacks ou dúvidas utilize o recurso de Issues
 - O arquivo `FEEDBACK.md` é um resumo das avaliações do instrutor e deverá ser modificado apenas por ele.
-
-## **10. Documentação PlantUML**
-
-**TAMBÉM ESTÁ DISPONÍVEL DOCUMENTAÇÃO DA ESTRUTURA E ALGUNS FLUXOS DO PROJETO, VOCÊ PODE ENCONTRAR OS ARQUIVOS PLANTUML E SUAS IMAGENS NA PASTA [/docs/PlantUML](https://github.com/pedrogutierres/DevXpert.Academy/tree/master/docs/PlantUML)**
