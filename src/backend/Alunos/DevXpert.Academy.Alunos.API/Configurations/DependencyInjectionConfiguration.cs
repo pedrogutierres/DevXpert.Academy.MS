@@ -3,7 +3,7 @@ using DevXpert.Academy.Alunos.Domain.Alunos.Handlers;
 using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
 using DevXpert.Academy.Alunos.Domain.Alunos.Services;
 using DevXpert.Academy.Alunos.Domain.Cursos.Interfaces;
-using DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents;
+using DevXpert.Academy.Alunos.Domain.IntegrationEvents;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

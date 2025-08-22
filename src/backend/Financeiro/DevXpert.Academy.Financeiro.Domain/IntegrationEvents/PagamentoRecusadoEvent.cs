@@ -1,6 +1,7 @@
-﻿using System;
+﻿using DevXpert.Academy.Core.Domain.Messages;
+using System;
 
-namespace DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents
+namespace DevXpert.Academy.Financeiro.Domain.IntegrationEvents
 {
     public class PagamentoRecusadoEvent : Event
     {

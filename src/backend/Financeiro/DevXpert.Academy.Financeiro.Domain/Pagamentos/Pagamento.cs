@@ -1,6 +1,6 @@
 ﻿using DevXpert.Academy.Core.Domain.DomainObjects;
-using DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents;
 using DevXpert.Academy.Financeiro.Domain.Alunos;
+using DevXpert.Academy.Financeiro.Domain.IntegrationEvents;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Validations;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.ValuesObejcts;
 using System;

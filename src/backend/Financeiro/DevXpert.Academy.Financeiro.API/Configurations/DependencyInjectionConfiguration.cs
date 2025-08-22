@@ -1,6 +1,6 @@
-﻿using DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents;
-using DevXpert.Academy.Financeiro.AntiCorruption;
+﻿using DevXpert.Academy.Financeiro.AntiCorruption;
 using DevXpert.Academy.Financeiro.Data.Repositories;
+using DevXpert.Academy.Financeiro.Domain.IntegrationEvents;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Commands;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Handlers;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Interfaces;

@@ -1,9 +1,9 @@
 ﻿using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.Exceptions;
 using DevXpert.Academy.Core.Domain.Extensions;
-using DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
 using DevXpert.Academy.Core.Domain.Services;
+using DevXpert.Academy.Financeiro.Domain.IntegrationEvents;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Commands;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Interfaces;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.ValuesObejcts;

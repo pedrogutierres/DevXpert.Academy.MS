@@ -1,5 +1,5 @@
 ﻿using DevXpert.Academy.Core.Domain.Communication.Mediatr;
-using DevXpert.Academy.Core.Domain.Messages.CommonMessages.IntegrationEvents;
+using DevXpert.Academy.Financeiro.Domain.IntegrationEvents;
 using DevXpert.Academy.Financeiro.Domain.Pagamentos.Commands;
 using MediatR;
 using System.Threading;
