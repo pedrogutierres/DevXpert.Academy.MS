@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Dom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.API", "src\backend\Conteudo\DevXpert.Academy.Conteudo.API\DevXpert.Academy.Conteudo.API.csproj", "{CE1F8E1D-4619-40A9-9415-84915ABFEFC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.API", "src\backend\Financeiro\DevXpert.Academy.Financeiro.API\DevXpert.Academy.Financeiro.API.csproj", "{DC451530-DB1A-475C-938C-716CF0388691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +145,10 @@ Global
 		{CE1F8E1D-4619-40A9-9415-84915ABFEFC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE1F8E1D-4619-40A9-9415-84915ABFEFC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE1F8E1D-4619-40A9-9415-84915ABFEFC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC451530-DB1A-475C-938C-716CF0388691}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC451530-DB1A-475C-938C-716CF0388691}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC451530-DB1A-475C-938C-716CF0388691}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC451530-DB1A-475C-938C-716CF0388691}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +179,7 @@ Global
 		{42BB9605-784B-8E7C-340F-798826BD4356} = {8EBDBF2A-84C1-4E2A-80E2-6C34AE9AE15F}
 		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121} = {2C646804-ABC4-4F82-8D47-8F2DC3F971FC}
 		{CE1F8E1D-4619-40A9-9415-84915ABFEFC3} = {21116F13-79A1-499A-9979-6BD10FCC9088}
+		{DC451530-DB1A-475C-938C-716CF0388691} = {3E8D04BB-4AAE-400F-B464-13004CFBA048}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFFAA9C6-4A0D-4C3E-9232-B0F8B8F13085}

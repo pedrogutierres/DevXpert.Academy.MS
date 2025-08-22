@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\DevXpert.Academy.Core.APIModel\DevXpert.Academy.Core.APIModel.csproj" />
+    <ProjectReference Include="..\DevXpert.Academy.Financeiro.AntiCorruption\DevXpert.Academy.Financeiro.AntiCorruption.csproj" />
+    <ProjectReference Include="..\DevXpert.Academy.Financeiro.Data\DevXpert.Academy.Financeiro.Data.csproj" />
+  </ItemGroup>
+
+</Project>
