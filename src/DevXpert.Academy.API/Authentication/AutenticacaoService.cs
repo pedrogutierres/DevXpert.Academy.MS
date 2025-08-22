@@ -1,13 +1,10 @@
 ﻿using DevXpert.Academy.Alunos.Domain.Alunos;
 using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
-using DevXpert.Academy.Alunos.Domain.Alunos.Services;
 using DevXpert.Academy.Core.Domain.Exceptions;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Polly;
 using System;
 using System.Data.Common;
 using System.Linq;

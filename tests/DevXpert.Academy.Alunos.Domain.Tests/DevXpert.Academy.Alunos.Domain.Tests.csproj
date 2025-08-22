@@ -16,9 +16,9 @@
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2" />
 	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\src\Alunos\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj" />
+	</ItemGroup>
 
   <ItemGroup>
     <Using Include="Xunit" />

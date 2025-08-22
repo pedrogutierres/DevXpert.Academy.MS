@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj" />
+	  <ProjectReference Include="..\..\Core\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj" />
 	  <ProjectReference Include="..\DevXpert.Academy.Financeiro.Domain\DevXpert.Academy.Financeiro.Domain.csproj" />
 	</ItemGroup>
 

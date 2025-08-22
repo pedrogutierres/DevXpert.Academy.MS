@@ -23,11 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DevXpert.Academy.Alunos.Data\DevXpert.Academy.Alunos.Data.csproj" />
-    <ProjectReference Include="..\DevXpert.Academy.Conteudo.Data\DevXpert.Academy.Conteudo.Data.csproj" />
-    <ProjectReference Include="..\DevXpert.Academy.Core.EventSourcing\DevXpert.Academy.Core.EventSourcing.csproj" />
-    <ProjectReference Include="..\DevXpert.Academy.Financeiro.AntiCorruption\DevXpert.Academy.Financeiro.AntiCorruption.csproj" />
-    <ProjectReference Include="..\DevXpert.Academy.Financeiro.Data\DevXpert.Academy.Financeiro.Data.csproj" />
+    <ProjectReference Include="..\Alunos\DevXpert.Academy.Alunos.Data\DevXpert.Academy.Alunos.Data.csproj" />
+    <ProjectReference Include="..\Conteudo\DevXpert.Academy.Conteudo.Data\DevXpert.Academy.Conteudo.Data.csproj" />
+    <ProjectReference Include="..\Core\DevXpert.Academy.Core.EventSourcing\DevXpert.Academy.Core.EventSourcing.csproj" />
+    <ProjectReference Include="..\Financeiro\DevXpert.Academy.Financeiro.AntiCorruption\DevXpert.Academy.Financeiro.AntiCorruption.csproj" />
+    <ProjectReference Include="..\Financeiro\DevXpert.Academy.Financeiro.Data\DevXpert.Academy.Financeiro.Data.csproj" />
   </ItemGroup>
 
 </Project>
