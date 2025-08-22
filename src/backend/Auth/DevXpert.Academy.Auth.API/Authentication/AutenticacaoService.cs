@@ -46,7 +46,6 @@ namespace DevXpert.Academy.Auth.API.Authentication
             _notifications = (DomainNotificationHandler)notifications;
         }
 
-
         public async Task<bool> ValidarLoginUsuarioAsync(string email, string senha)
         {
             var result = await _signInManager.PasswordSignInAsync(email, senha, false, lockoutOnFailure: false);
@@ -68,6 +67,7 @@ namespace DevXpert.Academy.Auth.API.Authentication
                 {
                     await _userManager.AddToRoleAsync(user, "Aluno");
 
+                    // TODO: Este processo abaixo, será movido para o orquestrador BFF
                     AuthToken token;
                     try
                     {
