@@ -12,6 +12,7 @@ builder.Services.AddApiSecurity(builder.Configuration);
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddSwaggerConfig();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+builder.Services.AddQueue(builder.Configuration);
 builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Environment);
 
 builder.Services.Configure<MicroservicesSettings>(

@@ -8,5 +8,7 @@ namespace DevXpert.Academy.Core.Domain.Communication.Mediatr
     {
         Task<TResponse> SendCommand<TResponse>(Command<TResponse> command, CancellationToken cancellation = default);
         Task RaiseEvent<T>(T @event, CancellationToken cancellation = default) where T : Event;
+
+        Task Enqueue(Command<bool> command, CancellationToken cancellation = default);
     }
 }
