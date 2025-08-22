@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using DevXpert.Academy.Alunos.API.ViewModels.Alunos;
+using DevXpert.Academy.Alunos.Domain.Alunos;
 using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
 using DevXpert.Academy.Core.APIModel.Controllers;
+using DevXpert.Academy.Core.APIModel.ResponseType;
 using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.DomainObjects;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
@@ -33,6 +35,19 @@ namespace DevXpert.Academy.Alunos.API.Controllers
         {
             _alunoRepository = alunoRepository;
             _mapper = mapper;
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Aluno")]
+        [ProducesResponseType(typeof(ResponseSuccess), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseError), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Cadastrar([FromBody] CadastrarAlunoViewModel viewModel, [FromServices] IAlunoService _alunoService)
+        {
+            var curso = _mapper.Map<Aluno>(viewModel);
+
+            await _alunoService.Cadastrar(curso);
+
+            return Response(curso.Id);
         }
 
         [HttpGet]

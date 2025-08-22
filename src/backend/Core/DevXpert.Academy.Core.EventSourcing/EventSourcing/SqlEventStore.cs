@@ -20,6 +20,9 @@ namespace DevXpert.Academy.Core.EventSourcing.EventStore.EventSourcing
 
         public Task SalvarEvento<T>(T evento) where T : Event
         {
+            //TODO: pensar e resolver depois
+            return Task.CompletedTask;
+
             var serializedData = JsonConvert.SerializeObject(evento);
 
             var storedEvent = new StoredEvent(
