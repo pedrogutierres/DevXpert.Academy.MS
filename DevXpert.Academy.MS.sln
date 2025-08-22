@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{02
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3F9B212B-7F6C-49D4-98D9-F5FFC8870688}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.Domain", "src\Core\DevXpert.Academy.Core.Domain\DevXpert.Academy.Core.Domain.csproj", "{A6760EE9-FCBD-4FC0-B24C-E4BBBDCBFD10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.Domain", "src\backend\Core\DevXpert.Academy.Core.Domain\DevXpert.Academy.Core.Domain.csproj", "{A6760EE9-FCBD-4FC0-B24C-E4BBBDCBFD10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.EventSourcing", "src\Core\DevXpert.Academy.Core.EventSourcing\DevXpert.Academy.Core.EventSourcing.csproj", "{2E631F6A-7B28-4F1D-B451-795AD4542A88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.EventSourcing", "src\backend\Core\DevXpert.Academy.Core.EventSourcing\DevXpert.Academy.Core.EventSourcing.csproj", "{2E631F6A-7B28-4F1D-B451-795AD4542A88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuilgindBlocks", "BuilgindBlocks", "{210DFE56-154D-468D-B429-B66F1DB6AEB8}"
 EndProject
@@ -19,7 +19,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{00D2EE
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.API", "src\DevXpert.Academy.API\DevXpert.Academy.API.csproj", "{4636DFD8-2716-4557-A4C1-2372DC409CAD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.API", "src\backend\DevXpert.Academy.API\DevXpert.Academy.API.csproj", "{4636DFD8-2716-4557-A4C1-2372DC409CAD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conteudo", "Conteudo", "{21116F13-79A1-499A-9979-6BD10FCC9088}"
 EndProject
@@ -27,27 +27,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Alunos", "Alunos", "{3DBF97
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Financeiro", "Financeiro", "{3E8D04BB-4AAE-400F-B464-13004CFBA048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Domain", "src\Conteudo\DevXpert.Academy.Conteudo.Domain\DevXpert.Academy.Conteudo.Domain.csproj", "{9A9312D1-381B-48D2-9FC0-18592E0D03AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Domain", "src\backend\Conteudo\DevXpert.Academy.Conteudo.Domain\DevXpert.Academy.Conteudo.Domain.csproj", "{9A9312D1-381B-48D2-9FC0-18592E0D03AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Data", "src\Conteudo\DevXpert.Academy.Conteudo.Data\DevXpert.Academy.Conteudo.Data.csproj", "{A8EB9F0D-35AB-4579-BB08-AAB48307CC49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Data", "src\backend\Conteudo\DevXpert.Academy.Conteudo.Data\DevXpert.Academy.Conteudo.Data.csproj", "{A8EB9F0D-35AB-4579-BB08-AAB48307CC49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Domain", "src\Alunos\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj", "{09C87C34-4E6A-4A99-B74C-88B53E0C0EB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Domain", "src\backend\Alunos\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj", "{09C87C34-4E6A-4A99-B74C-88B53E0C0EB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Data", "src\Alunos\DevXpert.Academy.Alunos.Data\DevXpert.Academy.Alunos.Data.csproj", "{4A235546-D094-46AC-B7FB-833C368D5C61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Data", "src\backend\Alunos\DevXpert.Academy.Alunos.Data\DevXpert.Academy.Alunos.Data.csproj", "{4A235546-D094-46AC-B7FB-833C368D5C61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Domain", "src\Financeiro\DevXpert.Academy.Financeiro.Domain\DevXpert.Academy.Financeiro.Domain.csproj", "{8383B055-2B8B-47D8-A2FB-E11818325EAB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Domain", "src\backend\Financeiro\DevXpert.Academy.Financeiro.Domain\DevXpert.Academy.Financeiro.Domain.csproj", "{8383B055-2B8B-47D8-A2FB-E11818325EAB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Data", "src\Financeiro\DevXpert.Academy.Financeiro.Data\DevXpert.Academy.Financeiro.Data.csproj", "{0BEE25B9-15B7-400B-876A-630C86F719A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Data", "src\backend\Financeiro\DevXpert.Academy.Financeiro.Data\DevXpert.Academy.Financeiro.Data.csproj", "{0BEE25B9-15B7-400B-876A-630C86F719A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.AntiCorruption", "src\Financeiro\DevXpert.Academy.Financeiro.AntiCorruption\DevXpert.Academy.Financeiro.AntiCorruption.csproj", "{7FF0A60F-3861-4417-95F8-AD2E498B48C7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Domain.Tests", "tests\DevXpert.Academy.Alunos.Domain.Tests\DevXpert.Academy.Alunos.Domain.Tests.csproj", "{9F74E614-8904-43CB-AAFD-8C72DB423EF1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Domain.Tests", "tests\DevXpert.Academy.Conteudo.Domain.Tests\DevXpert.Academy.Conteudo.Domain.Tests.csproj", "{1E34920F-4C39-480C-8EF3-AEACB5EB570A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Domain.Tests", "tests\DevXpert.Academy.Financeiro.Domain.Tests\DevXpert.Academy.Financeiro.Domain.Tests.csproj", "{A42C3972-F170-439A-8230-75D1670A6D11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.AntiCorruption.Tests", "tests\DevXpert.Academy.Financeiro.AntiCorruption.Tests\DevXpert.Academy.Financeiro.AntiCorruption.Tests.csproj", "{82F885D6-CA90-417A-9D70-30C39E1CEFE5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.AntiCorruption", "src\backend\Financeiro\DevXpert.Academy.Financeiro.AntiCorruption\DevXpert.Academy.Financeiro.AntiCorruption.csproj", "{7FF0A60F-3861-4417-95F8-AD2E498B48C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2C646804-ABC4-4F82-8D47-8F2DC3F971FC}"
 EndProject
@@ -55,13 +47,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8EBDBF2A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.Data", "src\Core\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj", "{881BADC7-269E-42C4-B1E2-3D850127D313}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.Data", "src\backend\Core\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj", "{881BADC7-269E-42C4-B1E2-3D850127D313}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BFF", "BFF", "{53E96AD9-7759-4510-B5F1-92FD411C4D59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.API", "src\Alunos\DevXpert.Academy.Alunos.API\DevXpert.Academy.Alunos.API.csproj", "{C79F4AE0-F72F-4522-B9A4-C5CE99203634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.API", "src\backend\Alunos\DevXpert.Academy.Alunos.API\DevXpert.Academy.Alunos.API.csproj", "{C79F4AE0-F72F-4522-B9A4-C5CE99203634}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.APIModel", "src\Core\DevXpert.Academy.Core.APIModel\DevXpert.Academy.Core.APIModel.csproj", "{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Core.APIModel", "src\backend\Core\DevXpert.Academy.Core.APIModel\DevXpert.Academy.Core.APIModel.csproj", "{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.AntiCorruption.Tests", "src\backend\Financeiro\tests\DevXpert.Academy.Financeiro.AntiCorruption.Tests\DevXpert.Academy.Financeiro.AntiCorruption.Tests.csproj", "{B266AE4E-AB18-F69D-18EA-A3403816F5D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Financeiro.Domain.Tests", "src\backend\Financeiro\tests\DevXpert.Academy.Financeiro.Domain.Tests\DevXpert.Academy.Financeiro.Domain.Tests.csproj", "{1CB0567B-382D-20BB-7E5E-EBB6AC791291}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Conteudo.Domain.Tests", "src\backend\Conteudo\tests\DevXpert.Academy.Conteudo.Domain.Tests\DevXpert.Academy.Conteudo.Domain.Tests.csproj", "{42BB9605-784B-8E7C-340F-798826BD4356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevXpert.Academy.Alunos.Domain.Tests", "src\backend\Alunos\tests\DevXpert.Academy.Alunos.Domain.Tests\DevXpert.Academy.Alunos.Domain.Tests.csproj", "{B871FA91-950A-41C7-ACA4-3A7B0CEE7121}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,22 +109,6 @@ Global
 		{7FF0A60F-3861-4417-95F8-AD2E498B48C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FF0A60F-3861-4417-95F8-AD2E498B48C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FF0A60F-3861-4417-95F8-AD2E498B48C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F74E614-8904-43CB-AAFD-8C72DB423EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F74E614-8904-43CB-AAFD-8C72DB423EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F74E614-8904-43CB-AAFD-8C72DB423EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F74E614-8904-43CB-AAFD-8C72DB423EF1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E34920F-4C39-480C-8EF3-AEACB5EB570A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E34920F-4C39-480C-8EF3-AEACB5EB570A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E34920F-4C39-480C-8EF3-AEACB5EB570A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E34920F-4C39-480C-8EF3-AEACB5EB570A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A42C3972-F170-439A-8230-75D1670A6D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A42C3972-F170-439A-8230-75D1670A6D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A42C3972-F170-439A-8230-75D1670A6D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A42C3972-F170-439A-8230-75D1670A6D11}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82F885D6-CA90-417A-9D70-30C39E1CEFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82F885D6-CA90-417A-9D70-30C39E1CEFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82F885D6-CA90-417A-9D70-30C39E1CEFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82F885D6-CA90-417A-9D70-30C39E1CEFE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{881BADC7-269E-42C4-B1E2-3D850127D313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{881BADC7-269E-42C4-B1E2-3D850127D313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{881BADC7-269E-42C4-B1E2-3D850127D313}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -137,6 +121,22 @@ Global
 		{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B266AE4E-AB18-F69D-18EA-A3403816F5D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B266AE4E-AB18-F69D-18EA-A3403816F5D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B266AE4E-AB18-F69D-18EA-A3403816F5D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B266AE4E-AB18-F69D-18EA-A3403816F5D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB0567B-382D-20BB-7E5E-EBB6AC791291}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB0567B-382D-20BB-7E5E-EBB6AC791291}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB0567B-382D-20BB-7E5E-EBB6AC791291}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB0567B-382D-20BB-7E5E-EBB6AC791291}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42BB9605-784B-8E7C-340F-798826BD4356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42BB9605-784B-8E7C-340F-798826BD4356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42BB9605-784B-8E7C-340F-798826BD4356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42BB9605-784B-8E7C-340F-798826BD4356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -156,16 +156,16 @@ Global
 		{8383B055-2B8B-47D8-A2FB-E11818325EAB} = {3E8D04BB-4AAE-400F-B464-13004CFBA048}
 		{0BEE25B9-15B7-400B-876A-630C86F719A3} = {3E8D04BB-4AAE-400F-B464-13004CFBA048}
 		{7FF0A60F-3861-4417-95F8-AD2E498B48C7} = {3E8D04BB-4AAE-400F-B464-13004CFBA048}
-		{9F74E614-8904-43CB-AAFD-8C72DB423EF1} = {2C646804-ABC4-4F82-8D47-8F2DC3F971FC}
-		{1E34920F-4C39-480C-8EF3-AEACB5EB570A} = {8EBDBF2A-84C1-4E2A-80E2-6C34AE9AE15F}
-		{A42C3972-F170-439A-8230-75D1670A6D11} = {5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A}
-		{82F885D6-CA90-417A-9D70-30C39E1CEFE5} = {5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A}
 		{2C646804-ABC4-4F82-8D47-8F2DC3F971FC} = {3DBF97EA-CBCB-4E7D-9A28-974CE813BBB0}
 		{8EBDBF2A-84C1-4E2A-80E2-6C34AE9AE15F} = {21116F13-79A1-499A-9979-6BD10FCC9088}
 		{5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A} = {3E8D04BB-4AAE-400F-B464-13004CFBA048}
 		{881BADC7-269E-42C4-B1E2-3D850127D313} = {3F9B212B-7F6C-49D4-98D9-F5FFC8870688}
 		{C79F4AE0-F72F-4522-B9A4-C5CE99203634} = {3DBF97EA-CBCB-4E7D-9A28-974CE813BBB0}
 		{6BC7AC54-58EA-4BFB-B114-35CE27EAEA48} = {3F9B212B-7F6C-49D4-98D9-F5FFC8870688}
+		{B266AE4E-AB18-F69D-18EA-A3403816F5D1} = {5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A}
+		{1CB0567B-382D-20BB-7E5E-EBB6AC791291} = {5E6995C7-E7C7-404D-8CD8-8FD3F9AF5B9A}
+		{42BB9605-784B-8E7C-340F-798826BD4356} = {8EBDBF2A-84C1-4E2A-80E2-6C34AE9AE15F}
+		{B871FA91-950A-41C7-ACA4-3A7B0CEE7121} = {2C646804-ABC4-4F82-8D47-8F2DC3F971FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EFFAA9C6-4A0D-4C3E-9232-B0F8B8F13085}

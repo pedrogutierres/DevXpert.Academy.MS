@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Alunos\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj" />
+	  <ProjectReference Include="..\..\DevXpert.Academy.Alunos.Domain\DevXpert.Academy.Alunos.Domain.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
