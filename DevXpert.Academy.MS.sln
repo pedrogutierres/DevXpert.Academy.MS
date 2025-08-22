@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuilgindBlocks", "BuilgindB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{00D2EE15-B6A5-4E26-961B-793EAC01594C}"
 	ProjectSection(SolutionItems) = preProject
-		FEEDBACK.md = FEEDBACK.md
 		README.md = README.md
 	EndProjectSection
 EndProject

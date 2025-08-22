@@ -1,4 +1,4 @@
-# **DevXpert Academy - Aplicação de Plataforma de Educação Online API RESTful**
+# **DevXpert Academy - Aplicação de Plataforma de Educação Online API Microsserviços REST**
 
 ## **1. Apresentação**
 
