@@ -1,0 +1,35 @@
+@startuml Casos de Uso Aluno
+!theme sketchy-outline
+skinparam BackgroundColor #FBEBCD
+skinparam StateFontColor black
+skinparam ArrowFontColor black
+
+left to right direction
+actor Aluno
+
+rectangle "Plataforma de Educação Online" {
+  usecase UC1 as "Cadastrar Aluno"
+  usecase UC2 as "Matricular-se em Curso"
+  usecase UC3 as "Realizar Pagamento"
+  usecase UC4 as "Visualizar Cursos Disponíveis"
+  usecase UC5 as "Acessar Aulas do Curso"
+  usecase UC6 as "Marcar Aula como Concluída"
+  usecase UC7 as "Visualizar Aulas Concluídas"
+  usecase UC8 as "Obter Certificado"
+  usecase UC9 as "Ver Detalhes da Matrícula"
+}
+
+Aluno --> UC1
+Aluno --> UC2
+Aluno --> UC4
+Aluno --> UC5
+Aluno --> UC6
+Aluno --> UC7
+Aluno --> UC8
+Aluno --> UC9
+
+UC2 .> UC3 : include
+UC5 .> UC6 : include
+UC8 .> UC7 : include
+
+@enduml

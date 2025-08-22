@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>disable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DevXpert.Academy.Conteudo.Domain\DevXpert.Academy.Conteudo.Domain.csproj" />
+	  <ProjectReference Include="..\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj" />
+	</ItemGroup>
+
+</Project>

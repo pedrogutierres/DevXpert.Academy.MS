@@ -1,0 +1,42 @@
+@startuml Sequencia Matricular
+
+!theme sketchy-outline
+skinparam BackgroundColor #FBEBCD
+skinparam StateFontColor black
+skinparam ArrowFontColor black
+
+participant "AlunoApp" as AlunoApp
+participant "MatriculaController" as MatriculaCtrl
+participant "MatriculaService" as MatriculaSvc
+participant "Mediatr" as Handler
+participant "PagamentoCommandHandler" as PagamentoSvc
+participant "MatriculaRepository" as MatriculaRepo
+participant "PagamentoGateway" as PagamentoGw
+participant "CursoRepository" as CursoRepo
+
+AlunoApp -> MatriculaCtrl : matricular(alunoId, cursoId, dadosPagamento)
+MatriculaCtrl -> CursoRepo : obterCurso(cursoId)
+CursoRepo --> MatriculaCtrl : curso
+MatriculaCtrl -> MatriculaSvc : criarMatricula(alunoId, curso)
+MatriculaSvc -> MatriculaRepo : salvarMatriculaPendente(matricula)
+MatriculaRepo --> MatriculaSvc : matriculaPendente
+MatriculaSvc --> MatriculaCtrl : matriculaPendente
+MatriculaCtrl -> Handler: registrarPagamento(dadosPagamento)
+Handler -> PagamentoSvc: registrarPagamento()
+PagamentoSvc --> Handler: dadosDoPagamentoRegistrado(pagamentoId):Event
+Handler -> PagamentoSvc: processarPagamento(pagamentoId)
+PagamentoSvc -> PagamentoGw: processarPagamento(pagamento)
+
+
+alt Pagamento Aprovado
+    PagamentoGw --> PagamentoSvc: aprovado
+    PagamentoSvc --> Handler: aprovado:Event
+    Handler -> MatriculaSvc: ativarMatricula()
+    MatriculaSvc --> MatriculaCtrl: sucesso
+    MatriculaCtrl --> AlunoApp: Matricula Ativa
+else Pagamento Recusado
+    PagamentoGw --> PagamentoSvc: recusado
+    PagamentoSvc --> MatriculaCtrl: falha
+    MatriculaCtrl --> AlunoApp: Matricula Pendente (msg: Pagamento Recusado)
+end
+@enduml
