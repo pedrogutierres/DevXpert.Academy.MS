@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<PreserveCompilationContext>true</PreserveCompilationContext>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.4" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="7.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\DevXpert.Academy.Core.Data\DevXpert.Academy.Core.Data.csproj" />
+	  <ProjectReference Include="..\DevXpert.Academy.Core.EventSourcing\DevXpert.Academy.Core.EventSourcing.csproj" />
+	</ItemGroup>
+
+</Project>
