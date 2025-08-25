@@ -2,7 +2,6 @@ using DevXpert.Academy.Auth.API.Authentication;
 using DevXpert.Academy.Auth.API.Configurations;
 using DevXpert.Academy.Auth.API.Extensions;
 using DevXpert.Academy.Auth.API.Helpers;
-using DevXpert.Academy.Auth.API.Services;
 using DevXpert.Academy.Core.APIModel.BackgroundServices;
 using DevXpert.Academy.Core.APIModel.Configurations;
 using DevXpert.Academy.Core.APIModel.Middlewares;
@@ -31,9 +30,9 @@ namespace DevXpert.Academy.Auth.API
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddSwaggerConfig();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+            builder.Services.AddEventSourcing(builder.Configuration, builder.Environment);
             builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Environment);
             builder.Services.AddDIConfiguration();
-            builder.Services.AddHttpClient<AlunoApiClient>(c => c.BaseAddress = new Uri("http://localhost:5002"));
 
             builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddRoles<IdentityRole>()

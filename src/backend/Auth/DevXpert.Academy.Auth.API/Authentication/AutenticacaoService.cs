@@ -1,6 +1,5 @@
 ﻿using DevXpert.Academy.Auth.API.Configurations;
 using DevXpert.Academy.Auth.API.IntegrationMessages;
-using DevXpert.Academy.Auth.API.Services;
 using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.Exceptions;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
@@ -20,7 +19,6 @@ namespace DevXpert.Academy.Auth.API.Authentication
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IMediatorHandler _mediator;
 
-        //private readonly AlunoApiClient _alunoApiClient;
         private readonly JwtTokenGenerate _jwtTokenGenerate;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -31,7 +29,6 @@ namespace DevXpert.Academy.Auth.API.Authentication
 
         public AutenticacaoService(
             IMediatorHandler mediator,
-            //AlunoApiClient alunoApiClient,
             JwtTokenGenerate jwtTokenGenerate,
             RoleManager<IdentityRole> roleManager,
             UserManager<IdentityUser> userManager,
@@ -40,7 +37,6 @@ namespace DevXpert.Academy.Auth.API.Authentication
             ILogger<AutenticacaoService> logger,
             INotificationHandler<DomainNotification> notifications)
         {
-            //_alunoApiClient = alunoApiClient;
             _mediator = mediator;
             _jwtTokenGenerate = jwtTokenGenerate;
             _roleManager = roleManager;

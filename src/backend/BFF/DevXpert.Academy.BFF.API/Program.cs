@@ -1,4 +1,5 @@
 using DevXpert.Academy.BFF.API.Configurations;
+using DevXpert.Academy.BFF.API.Services;
 using DevXpert.Academy.Core.APIModel.BackgroundServices;
 using DevXpert.Academy.Core.APIModel.Configurations;
 using DevXpert.Academy.Core.APIModel.Middlewares;
@@ -17,6 +18,14 @@ builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Enviro
 
 builder.Services.Configure<MicroservicesSettings>(
     builder.Configuration.GetSection("Microservices"));
+
+//builder.Services.AddScoped<AuthApiClient>();
+builder.Services.AddHttpClient<AuthApiClient>("AuthApiClient", (sp, client) =>
+{
+    var settings = sp.GetRequiredService<IOptions<MicroservicesSettings>>().Value;
+    client.BaseAddress = new Uri(settings.AuthApi.BaseUrl);
+    client.Timeout = TimeSpan.FromSeconds(settings.AuthApi.TimeoutSeconds);
+});
 
 builder.Services.AddHttpClient("AlunosApi", (sp, client) =>
 {

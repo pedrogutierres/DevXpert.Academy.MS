@@ -28,6 +28,7 @@ namespace DevXpert.Academy.Alunos.API
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddSwaggerConfig();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+            builder.Services.AddEventSourcing(builder.Configuration, builder.Environment);
             builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Environment);
             builder.Services.AddDIConfiguration();
 

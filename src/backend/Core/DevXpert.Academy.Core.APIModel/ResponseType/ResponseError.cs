@@ -11,7 +11,7 @@ namespace DevXpert.Academy.Core.APIModel.ResponseType
 {
     public class ResponseError : ProblemDetails
     {
-        private ResponseError() { } // Criado exclusivamente para o deserializador JSON nos testes
+        public ResponseError() { } // Criado exclusivamente para o deserializador JSON nos testes
 
         private ResponseError(string title, string detail, int status, string path)
         {
