@@ -43,6 +43,7 @@ builder.Services.AddQueue(builder.Configuration, () =>
 {
     return new RabbitMQOptions
     {
+        BaseQueueName = "bff",
         MessageTypes = new Dictionary<string, Type>
         {
             //{ "NomeDaMensagem", typeof(NomeDaMensagem) }

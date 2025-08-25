@@ -34,6 +34,7 @@ namespace DevXpert.Academy.Financeiro.API
             {
                 return new RabbitMQOptions
                 {
+                    BaseQueueName = "financeiro",
                     MessageTypes = new Dictionary<string, Type>
                     {
                         //{ "NomeDaMensagem", typeof(NomeDaMensagem) }

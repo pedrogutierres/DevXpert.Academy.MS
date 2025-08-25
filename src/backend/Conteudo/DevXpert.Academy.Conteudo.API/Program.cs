@@ -34,6 +34,7 @@ namespace DevXpert.Academy.Conteudo.API
             {
                 return new RabbitMQOptions
                 {
+                    BaseQueueName = "conteudo",
                     MessageTypes = new Dictionary<string, Type>
                     {
                         //{ "NomeDaMensagem", typeof(NomeDaMensagem) }

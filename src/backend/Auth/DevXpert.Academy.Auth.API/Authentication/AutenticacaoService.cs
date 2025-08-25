@@ -73,8 +73,9 @@ namespace DevXpert.Academy.Auth.API.Authentication
                 {
                     await _userManager.AddToRoleAsync(user, "Aluno");
 
+                    // TODO: Este processo abaixo, será movido para o orquestrador BFF, por enquanto está apenas como testes de comunicacao de api e filas
+
                     // Modelo 01. Criar aluno através de comunicação com API
-                    // TODO: Este processo abaixo, será movido para o orquestrador BFF
                     /*AuthToken token;
                     try
                     {

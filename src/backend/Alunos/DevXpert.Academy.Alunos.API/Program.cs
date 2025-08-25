@@ -35,6 +35,7 @@ namespace DevXpert.Academy.Alunos.API
             {
                 return new RabbitMQOptions
                 {
+                    BaseQueueName = "alunos",
                     MessageTypes = new Dictionary<string, Type>
                     {
                         { "RegistrarAlunoCommand", typeof(RegistrarAlunoCommand) }

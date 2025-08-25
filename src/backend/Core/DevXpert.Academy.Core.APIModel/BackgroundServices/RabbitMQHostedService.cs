@@ -20,6 +20,7 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 {
     public class RabbitMQOptions
     {
+        public string BaseQueueName { get; set; }
         public Dictionary<string, Type> MessageTypes { get; set; } = [];
     }
 
@@ -30,6 +31,7 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
         private readonly ILogger<RabbitMQHostedService> _logger;
         private readonly ConnectionFactory _factory;
 
+        private readonly string BaseQueueName;
         private readonly Dictionary<string, Type> MessageTypeRegistry;
 
         private IConnection _connection;
@@ -43,6 +45,7 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
             _host = host ?? throw new ArgumentNullException(nameof(host));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
+            BaseQueueName = options.BaseQueueName ?? throw new ArgumentNullException(nameof(options.BaseQueueName));
             MessageTypeRegistry = options.MessageTypes ?? throw new ArgumentNullException(nameof(options.MessageTypes));
 
             _logger.LogInformation("RabbitMQ: Configurando...");
@@ -107,9 +110,11 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 
             foreach (var messageType in MessageTypeRegistry)
             {
+                var key = $"{BaseQueueName}.{messageType.Key}";
+
                 // Criar a fila automaticamente
                 _channel.QueueDeclare(
-                    queue: messageType.Key,
+                    queue: key,
                     durable: true,
                     exclusive: false,
                     autoDelete: false,
@@ -118,7 +123,7 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 
                 // Fazer o bind da fila com a exchange
                 _channel.QueueBind(
-                    queue: messageType.Key,
+                    queue: key,
                     exchange: "commands",
                     routingKey: messageType.Key
                 );
@@ -205,8 +210,10 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 
             foreach (var messageType in MessageTypeRegistry)
             {
+                var key = $"{BaseQueueName}.{messageType.Key}";
+
                 _channel.BasicConsume(
-                    queue: messageType.Key,
+                    queue: key,
                     autoAck: false,
                     consumer: consumer
                 );

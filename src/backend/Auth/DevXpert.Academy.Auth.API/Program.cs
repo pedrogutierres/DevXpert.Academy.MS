@@ -46,6 +46,7 @@ namespace DevXpert.Academy.Auth.API
             {
                 return new RabbitMQOptions
                 {
+                    BaseQueueName = "auth",
                     MessageTypes = new Dictionary<string, Type>
                     {
                         //{ "NomeDaMensagem", typeof(NomeDaMensagem) }
