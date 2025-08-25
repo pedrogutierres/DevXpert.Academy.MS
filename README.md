@@ -94,14 +94,24 @@ A estrutura do projeto (em evolução) é organizada da seguinte forma:
    - `git clone https://github.com/pedrogutierres/DevXpert.Academy.MS.git`
    - `cd DevXpert.Academy.MS`
 
-2. **Configuração do Banco de Dados:**
-   - No arquivo `appsettings.json`, configure a string de conexão do SQL Server ou SQLite em ambiente de desenvolvimento.
+2. **Execute o docker-compose.infra.yml ou execute o sh 'build-infra.sh' para levantar o RabbitMQ:**
+   - `docker-compose -f docker-compose.infra.yml up -d`
+   - ou
+   - `sh build-infra.sh`
+
+3. **Configuração do Banco de Dados:**
+   - No arquivo `appsettings.json`, configure a string de conexão do SQL Server, se for SQLite em ambiente de desenvolvimento não precisa configurar nada.
    - Rode o projeto para que a configuração do Seed crie o banco e popule com os dados básicos
 
-3. **Executar a API:**
-   - `cd src/[em construção]...
-   - `dotnet run`
-   - Acesse a documentação da API em: http://localhost:5000/swagger
+4. **Executar a API:**
+   - Abra o Visual Studio com a solução "DevXpert.Academy.MS.sln"
+   - Selecione a opção de execução "MultipleStartup" e execute
+   - As documentações de cada API estão em:
+	- BFF: http://localhost:5000/swagger
+	- Auth: http://localhost:5001/swagger
+	- Alunos: http://localhost:5002/swagger
+	- Conteudo: http://localhost:5003/swagger
+	- Financeiro: http://localhost:5004/swagger
 
 ### **Uso do Blog**
 
