@@ -1,4 +1,4 @@
-﻿using DevXpert.Academy.BFF.API.Services;
+﻿using DevXpert.Academy.BFF.API.Clients;
 using DevXpert.Academy.BFF.API.ViewModels.Usuarios;
 using DevXpert.Academy.Core.APIModel.Controllers;
 using DevXpert.Academy.Core.Domain.Communication.Mediatr;
@@ -42,7 +42,7 @@ namespace DevXpert.Academy.BFF.API.Controllers
             {
                 return BadRequest(new ProblemDetails
                 {
-                    Title = "Falha no registro",
+                    Title = "Falha",
                     Detail = ex.Message,
                 });
             }
@@ -70,7 +70,7 @@ namespace DevXpert.Academy.BFF.API.Controllers
             {
                 return BadRequest(new ProblemDetails
                 {
-                    Title = "Falha no registro",
+                    Title = "Falha",
                     Detail = ex.Message,
                 });
             }

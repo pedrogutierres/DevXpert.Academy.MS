@@ -3,7 +3,7 @@ using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
 using System.Text.Json;
 
-namespace DevXpert.Academy.BFF.API.Services
+namespace DevXpert.Academy.BFF.API.Clients
 {
     public abstract class BaseApiClient
     {
@@ -20,7 +20,7 @@ namespace DevXpert.Academy.BFF.API.Services
             _mediator = mediator;
         }
 
-        protected async Task<T?> ProcessarRetorno<T>(HttpResponseMessage response) where T : class
+        protected async Task<T> ProcessarRetorno<T>(HttpResponseMessage response) where T : class
         {
             if (!response.IsSuccessStatusCode)
             {

@@ -6,6 +6,7 @@ namespace DevXpert.Academy.Core.Domain.DomainObjects
 {
     public interface IUser
     {
+        string AccessToken { get; }
         string Nome { get; }
         Guid UsuarioId { get; }
         Guid? UsuarioIdNullValue();

@@ -3,7 +3,7 @@ using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using System.Text;
 using System.Text.Json;
 
-namespace DevXpert.Academy.BFF.API.Services
+namespace DevXpert.Academy.BFF.API.Clients
 {
     public class AuthApiClient : BaseApiClient
     {

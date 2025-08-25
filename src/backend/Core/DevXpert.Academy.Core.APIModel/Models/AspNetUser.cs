@@ -22,6 +22,23 @@ namespace DevXpert.Academy.Core.APIModel.Models
 
         Guid IUser.UsuarioId => UsuarioIdNullValue() ?? throw new BusinessException("O usuário deve estar logado para realizar esta ação");
 
+        public string AccessToken
+        {
+            get
+            {
+                var authorizationHeader = _accessor.HttpContext?.Request.Headers["Authorization"];
+
+                if (string.IsNullOrEmpty(authorizationHeader))
+                {
+                    return null;
+                }
+
+                var token = authorizationHeader.ToString().Replace("Bearer ", string.Empty);
+
+                return token;
+            }
+        }
+
         public IEnumerable<Claim> RetornarClaims() => _accessor.HttpContext?.User?.Claims ?? Enumerable.Empty<Claim>();
 
         public Guid? UsuarioIdNullValue()

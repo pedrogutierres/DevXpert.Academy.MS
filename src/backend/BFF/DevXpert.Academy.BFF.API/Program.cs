@@ -1,5 +1,5 @@
+using DevXpert.Academy.BFF.API.Clients;
 using DevXpert.Academy.BFF.API.Configurations;
-using DevXpert.Academy.BFF.API.Services;
 using DevXpert.Academy.Core.APIModel.BackgroundServices;
 using DevXpert.Academy.Core.APIModel.Configurations;
 using DevXpert.Academy.Core.APIModel.Middlewares;
@@ -19,7 +19,6 @@ builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Enviro
 builder.Services.Configure<MicroservicesSettings>(
     builder.Configuration.GetSection("Microservices"));
 
-//builder.Services.AddScoped<AuthApiClient>();
 builder.Services.AddHttpClient<AuthApiClient>("AuthApiClient", (sp, client) =>
 {
     var settings = sp.GetRequiredService<IOptions<MicroservicesSettings>>().Value;
@@ -27,25 +26,25 @@ builder.Services.AddHttpClient<AuthApiClient>("AuthApiClient", (sp, client) =>
     client.Timeout = TimeSpan.FromSeconds(settings.AuthApi.TimeoutSeconds);
 });
 
-builder.Services.AddHttpClient("AlunosApi", (sp, client) =>
+builder.Services.AddHttpClient<AlunosApiClient>("AlunosApi", (sp, client) =>
 {
     var settings = sp.GetRequiredService<IOptions<MicroservicesSettings>>().Value;
-    client.BaseAddress = new Uri(settings.CustomerApi.BaseUrl);
-    client.Timeout = TimeSpan.FromSeconds(settings.CustomerApi.TimeoutSeconds);
+    client.BaseAddress = new Uri(settings.AlunosApi.BaseUrl);
+    client.Timeout = TimeSpan.FromSeconds(settings.AlunosApi.TimeoutSeconds);
 });
 
-builder.Services.AddHttpClient("ConteudoApi", (sp, client) =>
+builder.Services.AddHttpClient<ConteudoApiClient>("ConteudoApi", (sp, client) =>
 {
     var settings = sp.GetRequiredService<IOptions<MicroservicesSettings>>().Value;
-    client.BaseAddress = new Uri(settings.OrderApi.BaseUrl);
-    client.Timeout = TimeSpan.FromSeconds(settings.OrderApi.TimeoutSeconds);
+    client.BaseAddress = new Uri(settings.ConteudoApi.BaseUrl);
+    client.Timeout = TimeSpan.FromSeconds(settings.ConteudoApi.TimeoutSeconds);
 });
 
-builder.Services.AddHttpClient("FinanceiroApi", (sp, client) =>
+builder.Services.AddHttpClient<FinanceiroApiClient>("FinanceiroApi", (sp, client) =>
 {
     var settings = sp.GetRequiredService<IOptions<MicroservicesSettings>>().Value;
-    client.BaseAddress = new Uri(settings.OrderApi.BaseUrl);
-    client.Timeout = TimeSpan.FromSeconds(settings.OrderApi.TimeoutSeconds);
+    client.BaseAddress = new Uri(settings.FinanceiroApi.BaseUrl);
+    client.Timeout = TimeSpan.FromSeconds(settings.FinanceiroApi.TimeoutSeconds);
 });
 
 builder.Services.AddQueue(builder.Configuration, () =>

@@ -9,8 +9,8 @@
     public class MicroservicesSettings
     {
         public MicroserviceConfig AuthApi { get; set; } = new();
-        public MicroserviceConfig CustomerApi { get; set; } = new();
-        public MicroserviceConfig OrderApi { get; set; } = new();
-        public MicroserviceConfig PaymentApi { get; set; } = new();
+        public MicroserviceConfig AlunosApi { get; set; } = new();
+        public MicroserviceConfig ConteudoApi { get; set; } = new();
+        public MicroserviceConfig FinanceiroApi { get; set; } = new();
     }
 }
