@@ -56,7 +56,7 @@ namespace DevXpert.Academy.Alunos.API.Controllers
 
             if (!matricula.Ativa)
             {
-                await _mediator.SendCommand(new RegistrarPagamentoCommand(Guid.NewGuid(), matricula.Id, curso.Valor, pagamento.DadosCartao_Nome, pagamento.DadosCartao_Numero, pagamento.DadosCartao_Vencimento, pagamento.DadosCartao_CcvCvc));
+                await _mediator.Enqueue(new RegistrarPagamentoCommand(Guid.NewGuid(), matricula.Id, curso.Valor, pagamento.DadosCartao_Nome, pagamento.DadosCartao_Numero, pagamento.DadosCartao_Vencimento, pagamento.DadosCartao_CcvCvc));
             }
 
             return Response(matricula.Id);
@@ -74,7 +74,7 @@ namespace DevXpert.Academy.Alunos.API.Controllers
 
             var pagamentoCommand = new RegistrarPagamentoCommand(Guid.NewGuid(), matriculaId, matricula.Curso.Valor, pagamento.DadosCartao_Nome, pagamento.DadosCartao_Numero, pagamento.DadosCartao_Vencimento, pagamento.DadosCartao_CcvCvc);
 
-            await _mediator.SendCommand(pagamentoCommand);
+            await _mediator.Enqueue(pagamentoCommand);
 
             return Response(pagamentoCommand.AggregateId);
         }
@@ -90,7 +90,7 @@ namespace DevXpert.Academy.Alunos.API.Controllers
             if (!_user.EhUmAdministrador() && aluno.Id != _user.UsuarioId)
                 return BadRequest("Você não tem permissão para cancelar esta matrícula.");
 
-            await _mediator.SendCommand(new SolicitarEstornoPagamentoDaMatriculaCommand(matriculaId, viewModel.Motivo));
+            await _mediator.Enqueue(new SolicitarEstornoPagamentoDaMatriculaCommand(matriculaId, viewModel.Motivo));
 
             return Response(matriculaId);
         }

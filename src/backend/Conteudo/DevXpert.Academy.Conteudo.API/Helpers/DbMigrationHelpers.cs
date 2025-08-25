@@ -44,6 +44,9 @@ namespace DevXpert.Academy.Conteudo.API.Helpers
 
         private static async Task EnsureSeed(IServiceScope scope, DbContext context)
         {
+            if (await context.Database.GetDbConnection().ExecuteScalarAsync<int>("SELECT COUNT(*) FROM Cursos") > 0)
+                return;
+
             #region Criar Cursos Exemplos
             int i = 1;
             foreach (var id in new Guid[] { Guid.Parse("4caf0c97-f39c-49ee-bb2a-5b12c0a5e1c5"), Guid.Parse("7504a4d6-677b-4e70-afd2-420d8885e8bf"), Guid.Parse("02b3a6ea-f89a-4700-89ea-f2e0f13527ae") })
