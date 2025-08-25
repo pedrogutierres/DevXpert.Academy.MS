@@ -1,0 +1,27 @@
+[
+  {
+    "Name": "MultipleStartup",
+    "Projects": [
+      {
+        "Path": "src\\backend\\Alunos\\DevXpert.Academy.Alunos.API\\DevXpert.Academy.Alunos.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\backend\\Conteudo\\DevXpert.Academy.Conteudo.API\\DevXpert.Academy.Conteudo.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\backend\\Financeiro\\DevXpert.Academy.Financeiro.API\\DevXpert.Academy.Financeiro.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\backend\\BFF\\DevXpert.Academy.BFF.API\\DevXpert.Academy.BFF.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\backend\\Auth\\DevXpert.Academy.Auth.API\\DevXpert.Academy.Auth.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
