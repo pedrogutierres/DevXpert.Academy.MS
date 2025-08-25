@@ -26,6 +26,22 @@ namespace DevXpert.Academy.Alunos.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cursos",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Titulo = table.Column<string>(type: "TEXT", nullable: true),
+                    Valor = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Ativo = table.Column<bool>(type: "INTEGER", nullable: false),
+                    DataHoraCriacao = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DataHoraAlteracao = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cursos", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AlunosAulasConcluidas",
                 columns: table => new
                 {
@@ -43,6 +59,26 @@ namespace DevXpert.Academy.Alunos.Data.Migrations
                         name: "FK_AlunosAulasConcluidas_Alunos_AlunoId",
                         column: x => x.AlunoId,
                         principalTable: "Alunos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CursosAulas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    CursoId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    DataHoraCriacao = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    DataHoraAlteracao = table.Column<DateTime>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CursosAulas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CursosAulas_Cursos_CursoId",
+                        column: x => x.CursoId,
+                        principalTable: "Cursos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -80,6 +116,11 @@ namespace DevXpert.Academy.Alunos.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_CursosAulas_CursoId",
+                table: "CursosAulas",
+                column: "CursoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Matriculas_AlunoId",
                 table: "Matriculas",
                 column: "AlunoId");
@@ -97,10 +138,16 @@ namespace DevXpert.Academy.Alunos.Data.Migrations
                 name: "AlunosAulasConcluidas");
 
             migrationBuilder.DropTable(
+                name: "CursosAulas");
+
+            migrationBuilder.DropTable(
                 name: "Matriculas");
 
             migrationBuilder.DropTable(
                 name: "Alunos");
+
+            migrationBuilder.DropTable(
+                name: "Cursos");
         }
     }
 }

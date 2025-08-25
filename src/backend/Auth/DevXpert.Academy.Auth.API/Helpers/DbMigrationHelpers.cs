@@ -1,4 +1,5 @@
-﻿using DevXpert.Academy.Auth.API.Authentication;
+﻿using Dapper;
+using DevXpert.Academy.Auth.API.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -87,6 +88,56 @@ namespace DevXpert.Academy.Auth.API.Helpers
 
             await userManager.AddToRoleAsync(userAdm, "Administrador");
             #endregion
+
+            #region Aluno Pedro
+            var userAlunoPedro = new IdentityUser
+            {
+                Id = Guid.Parse("6e91fbf4-73dd-444c-9f5c-f1821e568634").ToString(),
+                UserName = "pedro@gmail.com",
+                NormalizedUserName = "PEDRO@GMAIL.COM",
+                Email = "PEDRO@GMAIL.COM",
+                NormalizedEmail = "PEDRO@GMAIL.COM",
+                AccessFailedCount = 0,
+                LockoutEnabled = false,
+                TwoFactorEnabled = false,
+                ConcurrencyStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            result = await userManager.CreateAsync(userAlunoPedro, "Pedro@123456");
+
+            if (!result.Succeeded)
+                return;
+
+            await userManager.AddToRoleAsync(userAlunoPedro, "Aluno");
+            #endregion
+
+            #region Aluno Eduardo
+            var userAlunoEduardo = new IdentityUser
+            {
+                Id = Guid.Parse("b4c5b1e0-8a55-4c12-8903-51bea5c3756a").ToString(),
+                UserName = "eduardo.pires@desenvolvedor.io",
+                NormalizedUserName = "EDUARDO.PIRES@DESENVOLVEDOR.IO",
+                Email = "EDUARDO.PIRES@DESENVOLVEDOR.IO",
+                NormalizedEmail = "EDUARDO.PIRES@DESENVOLVEDOR.IO",
+                AccessFailedCount = 0,
+                LockoutEnabled = false,
+                TwoFactorEnabled = false,
+                ConcurrencyStamp = Guid.NewGuid().ToString(),
+                EmailConfirmed = true,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+
+            result = await userManager.CreateAsync(userAlunoEduardo, "Eduardo@123456");
+
+            if (!result.Succeeded)
+                return;
+
+            await userManager.AddToRoleAsync(userAlunoEduardo, "Aluno");
+            #endregion
+
+            await context.SaveChangesAsync();
         }
     }
 }
