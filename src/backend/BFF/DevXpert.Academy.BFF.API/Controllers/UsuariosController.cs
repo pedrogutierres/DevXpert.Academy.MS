@@ -30,21 +30,28 @@ namespace DevXpert.Academy.BFF.API.Controllers
         [AllowAnonymous]
         [ProducesResponseType(typeof(AuthToken), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Login([FromBody] LoginViewModel login)
+        public async Task<IActionResult> Login([FromBody] LoginViewModel viewModel)
         {
-            // TODO: implementar
-            /*var result = await _signInManager.PasswordSignInAsync(login.Email, login.Senha, false, lockoutOnFailure: false);
-
-            if (result.Succeeded)
-                return Ok(await _jwtTokenGenerate.GerarToken(login.Email));
-
-            return BadRequest(new ProblemDetails
+            try
             {
-                Title = "Falha na autenticação",
-                Detail = "E-mail e/ou senha inválidos."
-            });*/
+                var user = await _authApiClient.LogarUsuarioAsync(viewModel);
+                if (user != null)
+                    return Ok(user);
+            }
+            catch (BusinessException ex)
+            {
+                return BadRequest(new ProblemDetails
+                {
+                    Title = "Falha no registro",
+                    Detail = ex.Message,
+                });
+            }
+            catch
+            {
+                throw;
+            }
 
-            return Ok();
+            return BadRequest();
         }
 
         [HttpPost("novo-aluno")]
