@@ -1,5 +1,7 @@
 ﻿using DevXpert.Academy.Auth.API.Configurations;
+using DevXpert.Academy.Auth.API.IntegrationMessages;
 using DevXpert.Academy.Auth.API.Services;
+using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.Exceptions;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
 using MediatR;
@@ -16,7 +18,9 @@ namespace DevXpert.Academy.Auth.API.Authentication
     public sealed class AutenticacaoService
     {
         private readonly SignInManager<IdentityUser> _signInManager;
-        private readonly AlunoApiClient _alunoApiClient;
+        private readonly IMediatorHandler _mediator;
+
+        //private readonly AlunoApiClient _alunoApiClient;
         private readonly JwtTokenGenerate _jwtTokenGenerate;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
@@ -26,7 +30,8 @@ namespace DevXpert.Academy.Auth.API.Authentication
         private readonly DomainNotificationHandler _notifications;
 
         public AutenticacaoService(
-            AlunoApiClient alunoApiClient,
+            IMediatorHandler mediator,
+            //AlunoApiClient alunoApiClient,
             JwtTokenGenerate jwtTokenGenerate,
             RoleManager<IdentityRole> roleManager,
             UserManager<IdentityUser> userManager,
@@ -35,7 +40,8 @@ namespace DevXpert.Academy.Auth.API.Authentication
             ILogger<AutenticacaoService> logger,
             INotificationHandler<DomainNotification> notifications)
         {
-            _alunoApiClient = alunoApiClient;
+            //_alunoApiClient = alunoApiClient;
+            _mediator = mediator;
             _jwtTokenGenerate = jwtTokenGenerate;
             _roleManager = roleManager;
             _userManager = userManager;
@@ -67,8 +73,9 @@ namespace DevXpert.Academy.Auth.API.Authentication
                 {
                     await _userManager.AddToRoleAsync(user, "Aluno");
 
+                    // Modelo 01. Criar aluno através de comunicação com API
                     // TODO: Este processo abaixo, será movido para o orquestrador BFF
-                    AuthToken token;
+                    /*AuthToken token;
                     try
                     {
                         token = await _jwtTokenGenerate.GerarToken(user.Email);
@@ -91,7 +98,10 @@ namespace DevXpert.Academy.Auth.API.Authentication
                         await _userManager.DeleteAsync(user);
 
                         throw new BusinessException(string.Join('.', _notifications.GetNotifications().Select(p => p.Value)));
-                    }
+                    }*/
+
+                    // Modelo 02. Criar aluno através de mensageria (RabbitMQ)
+                    await _mediator.Enqueue(new RegistrarAlunoCommand(Guid.Parse(user.Id), nome, email));
 
                     _logger.LogInformation("Usuário criado com senha.");
 

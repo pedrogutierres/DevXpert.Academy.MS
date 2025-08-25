@@ -30,15 +30,21 @@ namespace DevXpert.Academy.Core.APIModel.Services
             using var connection = _factory.CreateConnection();
             using var channel = connection.CreateModel();
 
+            channel.ExchangeDeclare(
+                exchange: "commands",
+                type: ExchangeType.Direct,
+                durable: true,
+                autoDelete: false
+            );
+
             var properties = channel.CreateBasicProperties();
             properties.Headers ??= new Dictionary<string, object>();
-            properties.Headers.Add("Assembly", command.GetType().Assembly.GetName().Name);
-            properties.Headers.Add("Type", command.GetType().FullName);
+            properties.Headers.Add("MessageType", command.MessageType);
 
             var bodyMessage = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(command));
 
-            channel.BasicPublish(exchange: "",
-                                 routingKey: "CommandHandler",
+            channel.BasicPublish(exchange: "commands",
+                                 routingKey: command.MessageType,
                                  basicProperties: properties,
                                  body: bodyMessage);
 

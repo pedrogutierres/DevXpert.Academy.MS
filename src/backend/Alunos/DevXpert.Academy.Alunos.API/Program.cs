@@ -1,5 +1,7 @@
 using DevXpert.Academy.Alunos.API.Configurations;
 using DevXpert.Academy.Alunos.API.Helpers;
+using DevXpert.Academy.Alunos.Domain.Alunos.Commands;
+using DevXpert.Academy.Core.APIModel.BackgroundServices;
 using DevXpert.Academy.Core.APIModel.Configurations;
 using DevXpert.Academy.Core.APIModel.Middlewares;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +9,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
 
 namespace DevXpert.Academy.Alunos.API
 {
@@ -24,9 +28,19 @@ namespace DevXpert.Academy.Alunos.API
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.AddSwaggerConfig();
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
-            builder.Services.AddQueue(builder.Configuration);
             builder.Services.AddDIConfigurationDefault(builder.Configuration, builder.Environment);
             builder.Services.AddDIConfiguration();
+
+            builder.Services.AddQueue(builder.Configuration, () =>
+            {
+                return new RabbitMQOptions
+                {
+                    MessageTypes = new Dictionary<string, Type>
+                    {
+                        { "RegistrarAlunoCommand", typeof(RegistrarAlunoCommand) }
+                    }
+                };
+            });
 
             var app = builder.Build();
 

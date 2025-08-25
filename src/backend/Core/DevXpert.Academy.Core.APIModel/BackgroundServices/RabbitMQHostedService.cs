@@ -11,13 +11,18 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 using System;
-using System.Reflection;
+using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 {
+    public class RabbitMQOptions
+    {
+        public Dictionary<string, Type> MessageTypes { get; set; } = [];
+    }
+
     public sealed class RabbitMQHostedService : IHostedService, IDisposable
     {
         private readonly IConfiguration _configuration;
@@ -25,16 +30,20 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
         private readonly ILogger<RabbitMQHostedService> _logger;
         private readonly ConnectionFactory _factory;
 
+        private readonly Dictionary<string, Type> MessageTypeRegistry;
+
         private IConnection _connection;
         private IModel _channel;
 
         private CancellationTokenSource _stoppingCts;
 
-        public RabbitMQHostedService(IConfiguration configuration, IHost host, ILogger<RabbitMQHostedService> logger)
+        public RabbitMQHostedService(IConfiguration configuration, IHost host, ILogger<RabbitMQHostedService> logger, RabbitMQOptions options)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             _host = host ?? throw new ArgumentNullException(nameof(host));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+
+            MessageTypeRegistry = options.MessageTypes ?? throw new ArgumentNullException(nameof(options.MessageTypes));
 
             _logger.LogInformation("RabbitMQ: Configurando...");
 
@@ -87,17 +96,36 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
 
             _logger.LogInformation("RabbitMQ: Connectado");
 
-            // Criar a fila automaticamente
-            _channel.QueueDeclare(
-                queue: "CommandHandler",
-                durable: true,
-                exclusive: false,
-                autoDelete: false,
-                arguments: null
-            );
+            if ((MessageTypeRegistry?.Count ?? 0) == 0)
+            {
+                _logger.LogInformation("RabbitMQ: Nenhuma mensagem configurada para ler da fila");
+                return Task.CompletedTask;
+            }
 
-            var consumerCommandHandler = new EventingBasicConsumer(_channel);
-            consumerCommandHandler.Received += async (sender, eventArgs) =>
+            // Criar a exchange automaticamente
+            _channel.ExchangeDeclare("commands", ExchangeType.Direct, durable: true);
+
+            foreach (var messageType in MessageTypeRegistry)
+            {
+                // Criar a fila automaticamente
+                _channel.QueueDeclare(
+                    queue: messageType.Key,
+                    durable: true,
+                    exclusive: false,
+                    autoDelete: false,
+                    arguments: null
+                );
+
+                // Fazer o bind da fila com a exchange
+                _channel.QueueBind(
+                    queue: messageType.Key,
+                    exchange: "commands",
+                    routingKey: messageType.Key
+                );
+            }
+
+            var consumer = new EventingBasicConsumer(_channel);
+            consumer.Received += async (sender, eventArgs) =>
             {
                 Command<bool> command;
                 string contentString = null;
@@ -108,12 +136,8 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
                     if (!props?.IsHeadersPresent() ?? false)
                         throw new Exception("Nenhum header informado na mensagem.");
 
-                    string assemblyString = GetStringFromHeader(props, "Assembly");
-                    string typeString = GetStringFromHeader(props, "Type");
-
-                    var type = Assembly.Load(assemblyString).GetType(typeString);
-                    if (type == null)
-                        throw new Exception($"Tipo da mensagem não identificado, Assembly: {assemblyString} | Type: {typeString}");
+                    string messageTypeString = GetStringFromHeader(props, "MessageType");
+                    var type = MessageTypeRegistry.GetValueOrDefault(messageTypeString) ?? throw new Exception($"Tipo da mensagem não identificado, MessageType: {messageTypeString}");
 
                     contentString = Encoding.UTF8.GetString(eventArgs.Body.ToArray());
 
@@ -179,7 +203,14 @@ namespace DevXpert.Academy.Core.APIModel.BackgroundServices
                 }
             };
 
-            _channel.BasicConsume("CommandHandler", false, consumerCommandHandler);
+            foreach (var messageType in MessageTypeRegistry)
+            {
+                _channel.BasicConsume(
+                    queue: messageType.Key,
+                    autoAck: false,
+                    consumer: consumer
+                );
+            }
 
             return Task.CompletedTask;
         }

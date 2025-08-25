@@ -1,9 +1,10 @@
 ﻿using DevXpert.Academy.Alunos.Data.Repositories;
+using DevXpert.Academy.Alunos.Domain.Alunos.Commands;
 using DevXpert.Academy.Alunos.Domain.Alunos.Handlers;
 using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
 using DevXpert.Academy.Alunos.Domain.Alunos.Services;
 using DevXpert.Academy.Alunos.Domain.Cursos.Interfaces;
-using DevXpert.Academy.Alunos.Domain.IntegrationEvents;
+using DevXpert.Academy.Alunos.Domain.IntegrationMessages;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +20,7 @@ namespace DevXpert.Academy.Alunos.API.Configurations
             services.AddScoped<ICursoReadOnlyRepository, CursoRepository>();
 
             // Handlers
-            //services.AddScoped<IRequestHandler<RegistrarPagamentoCommand, bool>, PagamentoCommandHandler>();
+            services.AddScoped<IRequestHandler<RegistrarAlunoCommand, bool>, AlunoService>();
 
             // Events
             services.AddScoped<INotificationHandler<PagamentoAprovadoEvent>, AlunoEventHandler>();

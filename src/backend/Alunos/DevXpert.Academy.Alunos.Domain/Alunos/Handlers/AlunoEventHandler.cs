@@ -1,5 +1,5 @@
 ﻿using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
-using DevXpert.Academy.Alunos.Domain.IntegrationEvents;
+using DevXpert.Academy.Alunos.Domain.IntegrationMessages;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

@@ -1,7 +1,7 @@
 ﻿using DevXpert.Academy.Core.Domain.Messages;
 using System;
 
-namespace DevXpert.Academy.Alunos.Domain.IntegrationEvents
+namespace DevXpert.Academy.Alunos.Domain.IntegrationMessages
 {
     public class PagamentoAprovadoEvent : Event
     {

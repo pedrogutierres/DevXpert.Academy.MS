@@ -1,4 +1,5 @@
-﻿using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
+﻿using DevXpert.Academy.Alunos.Domain.Alunos.Commands;
+using DevXpert.Academy.Alunos.Domain.Alunos.Interfaces;
 using DevXpert.Academy.Core.Domain.Communication.Mediatr;
 using DevXpert.Academy.Core.Domain.Exceptions;
 using DevXpert.Academy.Core.Domain.Messages.CommonMessages.Notifications;
@@ -6,11 +7,13 @@ using DevXpert.Academy.Core.Domain.Services;
 using MediatR;
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DevXpert.Academy.Alunos.Domain.Alunos.Services
 {
-    public class AlunoService : DomainService, IAlunoService
+    public class AlunoService : DomainService, IAlunoService,
+        IRequestHandler<RegistrarAlunoCommand, bool>
     {
         private readonly IAlunoRepository _alunoRepository;
 
@@ -21,6 +24,11 @@ namespace DevXpert.Academy.Alunos.Domain.Alunos.Services
             : base(alunoRepository.UnitOfWork, mediator, notifications)
         {
             _alunoRepository = alunoRepository;
+        }
+
+        public Task<bool> Handle(RegistrarAlunoCommand request, CancellationToken cancellationToken)
+        {
+            return Cadastrar(new Aluno(request.AggregateId, request.Nome));
         }
 
         public async Task<bool> Cadastrar(Aluno aluno)
